@@ -7,7 +7,7 @@
         xmlns:locn="http://www.w3.org/ns/locn#"
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
-    <dcat:Catalog rdf:about="https://uvp.niedersachsen.de/portal/">
+    <dcat:Catalog rdf:about="https://uvp.niedersachsen.de/">
         <dcat:dataset rdf:resource="https://uvp.niedersachsen.de/trefferanzeige?docuuid=84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA"/>
         <dct:description xml:lang="de">Dies ist das Portal der Umweltverträglichkeitsprüfungen für das Land
             Niedersachsen.
@@ -50,7 +50,7 @@
                 <vcard:hasStreetAddress>Veerßer Straße 53</vcard:hasStreetAddress>
                 <vcard:hasLocality>Uelzen</vcard:hasLocality>
                 <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
-                <vcard:hasEmail rdf:resource="info@landkreis-uelzen.de"/>
+                <vcard:hasEmail>info@landkreis-uelzen.de</vcard:hasEmail>
                 <vcard:hasTelephoneNumber></vcard:hasTelephoneNumber>
             </vcard:Organization>
         </dcat:contactPoint>
@@ -64,15 +64,15 @@
         <dct:identifier>84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA</dct:identifier>
         <dct:spatial>
             <dct:Location>
-                <dcat:bbox>{"type": "boundingbox", "coordinates": [[[52.91,10.7], [10.7,52.93], [52.93,10.8],
-                    [10.8,52.91]]]}
+                <dcat:bbox rdf:datatype="http://www.opengis.net/ont/geosparql#geoJSONLiteral">
+                    {"type": "Polygon", "coordinates": [[[10.7, 52.91], [10.7, 52.93], [10.8, 52.93], [10.8, 52.91], [10.7, 52.91]]]}
                 </dcat:bbox>
-                <dcat:centroid rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(52.92849,
-                    10.76545)
+                <dcat:centroid rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
+                    POINT (10.76545 52.92849)
                 </dcat:centroid>
                 <locn:geographicName>Suhlendorf</locn:geographicName>
-                <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.7 52.91, 10.8
-                    52.91, 10.8 52.93, 10.7 52.93))
+                <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
+                    POLYGON (10.7 52.91, 10.8 52.91, 10.8 52.93, 10.7 52.93, 10.7 52.91))
                 </locn:geometry>
             </dct:Location>
         </dct:spatial>

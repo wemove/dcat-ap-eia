@@ -7,7 +7,7 @@
         xmlns:locn="http://www.w3.org/ns/locn#"
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
-    <dcat:Catalog rdf:about="https://uvp-verbund.de/portal/">
+    <dcat:Catalog rdf:about="https://uvp-verbund.de/">
         <dcat:dataset rdf:resource="https://www.uvp-verbund.de/trefferanzeige?docuuid=F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8"/>
         <dct:description xml:lang="de">Informationen über UVP-pflichtige Vorhaben finden.</dct:description>
         <dct:title xml:lang="de">Umweltverträglichkeitsprüfungen der Länder</dct:title>
@@ -39,7 +39,7 @@
                 <vcard:hasStreetAddress>Altchemnitzer Straße 41</vcard:hasStreetAddress>
                 <vcard:hasLocality>Chemnitz</vcard:hasLocality>
                 <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
-                <vcard:hasEmail>"post@lds.sachsen.de"</vcard:hasEmail>
+                <vcard:hasEmail>post@lds.sachsen.de</vcard:hasEmail>
             </vcard:Organization>
         </dcat:contactPoint>
         <dct:publisher>
@@ -52,11 +52,11 @@
         <dct:identifier>F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8</dct:identifier>
         <dct:spatial>
             <dct:Location>
-                <dcat:bbox>{"type": "boundingbox", "coordinates": [[[50.871,12.939], [12.939,51.1078],
-                    [51.1078,13.5791], [13.5791,50.871]]]}
+                <dcat:bbox rdf:datatype="http://www.opengis.net/ont/geosparql#geoJSONLiteral">
+                    {"type": "Polygon", "coordinates": [[[12.939, 50.871], [12.939, 51.1078], [13.5791, 51.1078], [13.5791, 50.871], [12.939, 50.871]]]}
                 </dcat:bbox>
-                <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((12.939
-                    50.871,13.5791 50.871,,13.5791 51.1078, 12.939 51.1078))
+                <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
+                    POLYGON ((12.939 50.871, 12.939 51.1078, 13.5791 51.1078, 13.5791 50.871, 12.939 50.871))
                 </locn:geometry>
             </dct:Location>
         </dct:spatial>
