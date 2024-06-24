@@ -1,0 +1,6 @@
+# folders
+.idea
+.vscode
+
+# files
+*.ldb

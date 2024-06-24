@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<rdf:RDF
+        xmlns:dcat="http://www.w3.org/ns/dcat#"
+        xmlns:dct="http://purl.org/dc/terms/"
+        xmlns:eia="http://specs.uvp-verbund.de/eia/"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:locn="http://www.w3.org/ns/locn#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+    <dcat:Catalog rdf:about="https://uvp.niedersachsen.de/portal/">
+        <dcat:dataset rdf:resource="https://uvp.niedersachsen.de/trefferanzeige?docuuid=84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA"/>
+        <dct:description xml:lang="de">Dies ist das Portal der Umweltverträglichkeitsprüfungen für das Land
+            Niedersachsen.
+        </dct:description>
+        <dct:title xml:lang="de">UVP Portal des Bundeslandes Niedersachsen</dct:title>
+        <dct:publisher>
+            <foaf:Agent>
+                <foaf:name>Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz</foaf:name>
+            </foaf:Agent>
+        </dct:publisher>
+        <foaf:homepage rdf:resource="https://uvp.niedersachsen.de/portal/"/>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
+    </dcat:Catalog>
+    <dcat:Dataset rdf:about="https://uvp.niedersachsen.de/trefferanzeige?docuuid=84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA">
+        <dct:title xml:lang="de">Windpark Könau</dct:title>
+        <dct:description xml:lang="de">
+            Die JWE Bürgerwindpark Könau-Ostedt-Suhlendorf GmbH &amp; Co. KG, Kroetzer Allee 5, 29559 Wrestedt, plant
+            die Errichtung und den Betrieb von sieben Windenergieanlagen (WEA) des Typs GE 5.5-158 mit einer Nabenhöhe
+            von 150 m [WEA 1, 3, 4, 7] bzw. 161 m [WEA 2, 5, 6] und einem Rotordurchmesser von je 158 m, d.h. einer
+            Gesamthöhe von 229 m bzw. 240 m als gemeinsame Anlage im Gebiet der Gemeinde Suhlendorf (Samtgemeinde
+            Rosche).
+
+            Die Errichtung und der Betrieb der WEA sind an den folgenden Standorten geplant:
+            "WEA 1“ – Gemarkung Ostedt, Flur 2, Flurstücke 39/2, 42/2
+            "WEA 2“ – Gemarkung Ostedt, Flur 2, Flurstück 108/2
+            „WEA 3“ – Gemarkung Suhlendorf, Flur 1, Flurstück 202/1
+            „WEA 4“ – Gemarkung Ostedt, Flur 2, 93/1, 95
+            „WEA 5“ – Gemarkung Suhlendorf, Flur 2, Flurstück 42/1
+            „WEA 6“ – Gemarkung Ostedt, Flur 2, Flurstück 86/1
+            „WEA 7“ – Gemarkung Ostedt, Flur 2, Flurstück 78/1
+
+            Die Antragsflurstücke werden derzeit landwirtschaftlich genutzt. Das Vorhaben unterliegt der
+            Genehmigungspflicht nach §§ 4, 10 Bundes-Immissionsschutzgesetz (BImSchG).
+        </dct:description>
+        <dcat:contactPoint>
+            <vcard:Organization>
+                <vcard:fn>Landkreis Uelzen, Niedersachsen</vcard:fn>
+                <vcard:hasPostalCode>29525</vcard:hasPostalCode>
+                <vcard:hasStreetAddress>Veerßer Straße 53</vcard:hasStreetAddress>
+                <vcard:hasLocality>Uelzen</vcard:hasLocality>
+                <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
+                <vcard:hasEmail rdf:resource="info@landkreis-uelzen.de"/>
+                <vcard:hasTelephoneNumber></vcard:hasTelephoneNumber>
+            </vcard:Organization>
+        </dcat:contactPoint>
+        <dct:publisher>
+            <foaf:Agent>
+                <foaf:name>Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz</foaf:name>
+            </foaf:Agent>
+        </dct:publisher>
+        <dcat:distribution rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc/distribution"/>
+        <dcat:distribution rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf/distribution"/>
+        <dct:identifier>84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA</dct:identifier>
+        <dct:spatial>
+            <dct:Location>
+                <dcat:bbox>{"type": "boundingbox", "coordinates": [[[52.91,10.7], [10.7,52.93], [52.93,10.8],
+                    [10.8,52.91]]]}
+                </dcat:bbox>
+                <dcat:centroid rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(52.92849,
+                    10.76545)
+                </dcat:centroid>
+                <locn:geographicName>Suhlendorf</locn:geographicName>
+                <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.7 52.91, 10.8
+                    52.91, 10.8 52.93, 10.7 52.93))
+                </locn:geometry>
+            </dct:Location>
+        </dct:spatial>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
+        <eia:number>1-1-1</eia:number>
+        <eia:procedureType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcedureType/Zulassungsverfahren"/>
+        <eia:prelimAssessment>true</eia:prelimAssessment>
+        <eia:receiptDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01</eia:receiptDate>
+        <eia:processStep rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcessSteps/0123-4567-7890/processStep"/>
+    </dcat:Dataset>
+    <eia:ProcessStep rdf:about="https://dcat-ap-eia.info/resource/authority/ProcessSteps/0123-4567-7890/processStep"> <!--ins dataset hinein schieben, da nicht unabhängig-->
+        <dct:identifier>0000-0000-0000</dct:identifier>
+        <eia:processStepType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcessStepType/OeffAuslegung"/>
+        <dcat:distribution rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc/distribution"/>
+        <dcat:distribution rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf/distribution"/>
+        <dct:temporal>
+            <dct:PeriodOfTime>
+                <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-05-01T00:00:00.000Z</dcat:startDate>
+                <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-05-01T00:00:00.000Z</dcat:endDate>
+            </dct:PeriodOfTime>
+        </dct:temporal>
+    </eia:ProcessStep>
+    <dcat:Distribution rdf:about="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc/distribution">
+        <dct:title xml:lang="de">Auslegungsinformationen</dct:title>
+        <dct:description>( Bekanntmachung Genehmigungsbescheid I20200006.doc 51.7 kB )</dct:description>
+        <dcat:accessURL rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc"/>
+        <dct:format>DOC</dct:format>
+        <dcat:downloadURL rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc"/>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
+        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/AnnouncementDocs"/>
+        <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z></eia:validUntil>
+    </dcat:Distribution>
+    <dcat:Distribution rdf:about="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf/distribution">
+        <dct:title xml:lang="de">Entscheidung</dct:title>
+        <dct:description>( Genehmigungsbescheid I20200006.pdf 0.4 MB )</dct:description>
+        <dcat:accessURL rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf"/>
+        <dct:format>PDF</dct:format>
+        <dcat:downloadURL rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf"/>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
+        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/DecisionDocs"/>
+        <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z></eia:validUntil>
+    </dcat:Distribution>
+</rdf:RDF>
