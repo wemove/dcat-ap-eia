@@ -1,6 +1,6 @@
 # DCAT-AP.EIA
 
-DCAT-AP.EIA is an extension of DCAT-AP for describing environmental impact assessment datasets.
+DCAT-AP.EIA is an extension of DCAT-AP for describing environmental impact assessment ("Umweltverträglichkeitsprüfungen") datasets.
 
 ## Structure of the repository
 
