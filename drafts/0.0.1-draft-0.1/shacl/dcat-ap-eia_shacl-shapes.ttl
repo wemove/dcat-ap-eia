@@ -302,7 +302,6 @@
         sh:path eia:number ;
         sh:nodeKind sh:Literal ;
         sh:minCount 1 ;
-        sh:maxCount 1 ;
     ], [
         sh:path eia:prelimAssessment ;
         sh:nodeKind sh:Literal ;
