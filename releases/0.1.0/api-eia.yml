@@ -1,0 +1,1226 @@
+openapi: 3.0.3
+info:
+  title: EIA API
+  version: 0.1.0
+  description: 'This is the API for the EIA Information System. Find information on environmental impact assessments ("EIA") and their respective status.
+  contact:
+    name: wemove digital solutions GmbH
+    url: https://www.wemove.com
+    email: contact@wemove.com
+  license:
+    name: CC BY 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+  - url: '{baseUrl}/v1'
+    description: Development server
+tags:
+  - name: Capabilities
+  - name: Collections
+  - name: Records
+paths:
+  /:
+    get:
+      tags:
+        - Capabilities
+      summary: landing page
+      description: |-
+        The landing page provides links to the API definition, the conformance
+        statements and to the catalogs and datasets available.
+      operationId: getLandingPage
+      responses:
+        '200':
+          $ref: '#/components/responses/LandingPage'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+  /conformance:
+    get:
+      tags:
+        - Capabilities
+      summary: information about specifications that this API conforms to
+      description: |-
+        A list of all conformance classes specified in a standard that the
+        server conforms to.
+      operationId: getConformanceDeclaration
+      responses:
+        '200':
+          $ref: '#/components/responses/ConformanceDeclaration'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+  /version:
+    get:
+      tags:
+        - Capabilities
+      summary: version information
+      description:
+        The version number of the current API specification for the EIA Information System.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+  /collections:
+    get:
+      tags:
+        - Collections
+      summary: the catalogs accessible through this API
+      description:
+        A list of all catalogs that are accessible through this API in DCAT-AP.EIA format via the specified file format
+      operationId: getCollections
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collections'
+            application/rdf+xml:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/rdf'
+                - type: object
+                  properties:
+                    collections:
+                      $ref: '#/components/schemas/collections'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+  /collections/{collectionId}:
+    get:
+      tags:
+        - Collections
+      summary: |-
+        describe the catalog with id `collectionId`
+      operationId: describeCollection
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collection'
+            application/rdf+xml:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/rdf'
+                - type: object
+                  properties:
+                    collection:
+                      $ref: '#/components/schemas/collection'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+  # brauchen wir das noch: /collections/{collectionId}/sortables
+  # evtl. /collections/{collectionId}/queryables
+  /collections/{collectionId}/items:
+    get:
+      tags:
+        - Records
+      summary: fetch records
+      description: |-
+        Fetch records of the catalog with id `collectionId`.
+        The response is a document consisting of records in the catalog.
+        The records included in the response are determined by the server
+        based on the query parameters of the request. To support access to
+        larger collections without overloading the client, the API supports
+        paged access with links to the next page, if more records are selected
+        that the page size.
+        Different parameters can be used to select only a
+        subset of the records in the catalog.
+        The `bbox` parameter matches all records in the catalog that are not associated with a location, too. The
+        `datetime` parameter matches all records in the catalog that are
+        not associated with a time stamp or interval, too.
+        The `limit` parameter may be used to control the subset of the
+        selected records that should be returned in the response, the page size.
+        Each page may include information about the number of selected and
+        returned records (`numberMatched` and `numberReturned`) as well as
+        links to support paging (link relation `next`).
+      operationId: getRecords
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/bbox'
+        - $ref: '#/components/parameters/datetime'
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/eiaNumber'
+        - $ref: '#/components/parameters/prelimAssessment'
+        - $ref: '#/components/parameters/procsteptype'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/rdf+xml:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/rdf'
+                - type: object
+                  properties:
+                    collections:
+                      $ref: '#/components/schemas/collections'
+                    records:
+                      $ref: '#/components/schemas/records'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+    post:
+      tags:
+        - Records
+      summary: post a new record
+      description: |-
+        Post a record into the collection with id `collectionId`.
+      operationId: postRecord
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+      requestBody:
+        required: true
+        content:
+          application/rdf+xml:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/rdf'
+              - type: object
+                properties:
+                  record:
+                    $ref: '#/components/schemas/record'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '400':
+          $ref: '#/components/responses/400InvalidInput'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+  /collections/{collectionId}/items/{recordId}:
+    get:
+      tags:
+        - Records
+      summary: fetch a single record
+      description: |-
+        Fetch the record with id `recordId` in the catalog
+        with id `collectionId`.
+      operationId: getRecord
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/rdf+xml:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/rdf'
+                - type: object
+                  properties:
+                    record:
+                      $ref: '#/components/schemas/record'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+    put:
+      tags:
+        - Records
+      summary: overwrite an existing record
+      description: |-
+        Update an existing record with id `recordId` in the collection with id `collectionId` by overwriting it.
+        Expects a complete DCAT-AP.EIA document as payload.
+      operationId: putRecord
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/recordId'
+      requestBody:
+        required: true
+        content:
+          application/rdf+xml:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/rdf'
+              - type: object
+                properties:
+                  record:
+                    $ref: '#/components/schemas/record'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '400':
+          $ref: '#/components/responses/400InvalidInput'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+    patch:
+      tags:
+        - Records
+      summary: update a property of an existing record (other properties remain as-is)
+      description: |-
+        Update some property of an existing record with id `recordId` in the collection with id `collectionId`.
+      parameters:
+        - $ref: '#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/recordId'
+      requestBody:
+        required: true
+        content:
+          application/rdf+xml:
+            schema:
+              $ref: '#/components/schemas/record'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '400':
+          $ref: '#/components/responses/400InvalidInput'
+        '500':
+          $ref: '#/components/responses/500GenericError'
+components:
+  parameters:
+    bbox:
+      name: bbox
+      in: query
+      description: |-
+        Only records that have a geometry that intersects the bounding box are
+        selected. The bounding box is provided as four or six numbers,
+        depending on whether the coordinate reference system includes a
+        vertical axis (height or depth):
+
+        * Lower left corner, coordinate axis 1
+        * Lower left corner, coordinate axis 2
+        * Minimum value, coordinate axis 3 (optional)
+        * Upper right corner, coordinate axis 1
+        * Upper right corner, coordinate axis 2
+        * Maximum value, coordinate axis 3 (optional)
+
+        The coordinate reference system of the values is WGS 84 long/lat
+        (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different
+        coordinate reference system is specified in the parameter `bbox-crs`.
+
+        For WGS 84 longitude/latitude the values are in most cases the sequence
+        of minimum longitude, minimum latitude, maximum longitude and maximum
+        latitude.
+
+        However, in cases where the box spans the antimeridian the first value
+        (west-most box edge) is larger than the third value (east-most box
+        edge).
+
+        If the vertical axis is included, the third and the sixth number are
+        the bottom and the top of the 3-dimensional bounding box.
+
+        If a record has multiple spatial geometry properties, it is the
+        decision of the server whether only a single spatial geometry property
+        is used to determine the extent or all relevant geometries.
+      required: false
+      schema:
+        type: array
+        oneOf:
+          - minItems: 4
+            maxItems: 4
+          - minItems: 6
+            maxItems: 6
+        items:
+          type: number
+      style: form
+      explode: false
+    datetime:
+      name: datetime
+      in: query
+      description: |-
+        Either a date-time or an interval, open or closed. Date and time
+        expressions adhere to RFC 3339. Open intervals are expressed using
+        double-dots.
+
+        Examples:
+
+        * A date-time: "2018-02-12T23:20:50Z"
+        * A closed interval: "2018-02-12T00:00:00Z/2018-03-18T12:31:12Z"
+        * Open intervals: "2018-02-12T00:00:00Z/.." or "../2018-03-18T12:31:12Z"
+
+        Only records that have a temporal property that intersects the value of
+        `datetime` are selected.  It is left to the decision of the server
+        whether only a single temporal property is used to determine the extent
+        or all relevant temporal properties.
+      required: false
+      schema:
+        type: string
+      style: form
+      explode: false
+    type:
+      name: type
+      in: query
+      description: The optional type parameter supports searching by procedure type.  Only
+        procedures whose type is equal to one of the listed values shall be selected.
+      required: false
+      schema:
+        type: string
+        enum: [approvalProcedure, spatialPlanningProcedure, routeDetermination, negPrelimScreening, foreignProcedure]
+      explode: false
+      style: form
+    collectionId:
+      name: collectionId
+      in: path
+      description: local identifier of a catalog
+      required: true
+      schema:
+        type: string
+        example: he
+    recordId:
+      name: recordId
+      in: path
+      description: local identifier of an EIA procedure
+      required: true
+      schema:
+        type: string
+        example: f08a255e-2c11-49dd-bdf9-88a0dcbe2aa6
+    q:
+      name: q
+      in: query
+      description: The optional q parameter supports keyword searching.  Only records whose text fields contain one or more of the specified search terms are selected.  The specific set of text keys/fields/properties of a record to which the q operator is applied is up to the description of the server.   Implementations should, however, apply the q operator to the title, description and keywords keys/fields/properties.
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          minLength: 3
+        example: Windkraft
+    limit:
+      name: limit
+      in: query
+      description: The optional limit parameter limits the number of items that are presented in the response document. Only items are counted that are on the first level of the collection in the response document. Nested objects contained within the explicitly requested items shall not be counted.
+      required: false 
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 10
+      explode: false
+      style: form
+    title:
+      name: title
+      in: query
+      description: the title of the procedure
+      required: false 
+      schema:
+        type: string
+        example: Errichtung und Betrieb von drei Windkraftanlagen
+    location:
+      name: location
+      in: query
+      description: the location of the procedure
+      required: false 
+      schema:
+        type: string
+        minLength: 3
+        example: Frankfurt
+    eiaNumber:
+      name: eiaNumber
+      in: query
+      description: the EIA number of the procedure
+      required: false 
+      schema:
+        type: string
+        enum: [UVPG-1.1.1, UVPG-1.1.2, UVPG-1.2.1, UVPG-1.2.2.1, UVPG-1.2.2.2, UVPG-1.2.3.1, UVPG-1.2.3.2, UVPG-1.2.4.1, UVPG-1.2.4.2, UVPG-1.4.1.1, UVPG-1.4.1.1, UVPG-1.4.1.2, UVPG-1.4.1.3, UVPG-1.4.2.1, UVPG-1.4.2.2, UVPG-1.4.2.3, UVPG-1.6.1, UVPG-1.6.2, UVPG-1.6.3, UVPG-1.7, UVPG-1.8.1, UVPG-1.8.2, UVPG-1.9.1, UVPG-1.9.2, UVPG-1.10.1, UVPG-1.10.2, UVPG-1.10.3, UVPG-1.11.1.1, UVPG-1.11.1.2, UVPG-1.11.2.1, UVPG-1.11.2.2]
+        example: UVPG-1.1.1
+    prelimAssessment:
+      name: prelimAssessment
+      in: query
+      description: the information, whether a preliminary assessment was conducted or not
+      required: false
+      schema:
+        type: string
+        enum: [true, false]
+    procsteptype:
+      name: procsteptype
+      in: query
+      description: type of the process step
+      required: false 
+      schema:
+        type: string
+        enum: [publicDisclosure, publicHearing, approvalDecision]
+  schemas:
+    agent:
+      description: An agent; i.e. a person or an organisation
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          description: Name of the agent (e.g. full personal name or organisation name)
+          type: string
+          example: Behörde für beispielhafte Bebauungspläne
+          xml:
+            prefix: foaf
+            name: name
+        type:
+          description: Type of the agent
+          type: string
+          example: http://purl.org/adms/publishertype/LocalAuthority
+          format: uri
+          xml:
+            prefix: dct
+            name: type
+      xml:
+        prefix: foaf
+        name: Agent
+    collection:
+      description: |-
+        Information about the catalog with id `collectionId`.
+        The response contains a link to the items in the catalog
+        (path `/collections/{collectionId}/items`, link relation `items`)
+        as well as key information about the catalog. This information
+        includes:
+        * A local identifier for the catalog that is unique for the +
+          catalogue;
+        * An optional title and description for the catalog;
+        * An optional indicator about the type of the items in the catalog +
+          (the default value, if the indicator is not provided, is 'record').
+      type: object
+      required:
+        - description
+        - id
+        - publisher
+        - title
+      properties:
+        id:
+          description: identifier of the catalog used, for example, in URIs
+          type: string
+          example: he
+          xml:
+            prefix: dct
+            name: identifier
+        title:
+          description: human readable title of the catalog
+          type: string
+          example: UVP Katalog des Bundeslandes Hessen
+          xml:
+            prefix: dct
+            name: title
+        description:
+          description: a description of the records in the catalog
+          type: string
+          xml:
+            prefix: dct
+            name: description
+        themeTaxonomy:
+          description: Schema for the classification of datasets listed in the catalog
+          type: string
+          example: TODO
+          xml:
+            prefix: dcat
+            name: themeTaxonomy
+        issued:
+          description: Date of creation of this collection.
+          type: string
+          format: date-time
+          example: '2022-06-07T12:22:11Z'
+          xml:
+            prefix: dct
+            name: issued
+        language:
+          description: The language of the collection and its records.
+          type: string
+          example: german
+          xml:
+            prefix: dct
+            name: language
+        modified:
+          description: The most recent date on which the collection was changed.
+          type: string
+          format: date-time
+          example: '2022-06-07T12:22:11Z'
+          xml:
+            prefix: dct
+            name: modified
+        homepage:
+          description: A website with additional information about this collection.
+          type: string
+          format: uri
+          example: TODO
+          xml:
+            prefix: foaf
+            name: homepage
+        publisher:
+          description: The publisher of this collection
+          type: object
+          properties:
+            agent:
+              $ref: '#/components/schemas/agent'
+          xml:
+            prefix: dct
+            name: publisher
+      xml:
+        prefix: dcat
+        name: Catalog
+    collections:
+      description: |-
+        The catalogs shared by this API.
+        This resource provides information about and access to these catalogs.
+        The response contains the list of catalogs (itemType=record).
+        For each catalog, a link to the items in the catalog
+        (path `/collections/{collectionId}/items`, link relation `items`) as
+        well as key information about the catalog. This information
+        includes...
+        * A local identifier for the catalog that is unique for the +
+          catalogue;
+        * An optional title and description for the catalog;
+        * An optional extent that can be used to provide an indication of the +
+          spatial and temporal extent of the catalog - typically derived +
+          from the data;
+        * An optional indicator about the type of the items in the catalog +
+          (the default value, if the indicator is not provided, is 'record').
+      type: array
+      items:
+        $ref: '#/components/schemas/collection'
+    confClasses:
+      type: object
+      required:
+        - conformsTo
+      properties:
+        conformsTo:
+          type: array
+          items:
+            type: string
+    distribution:
+      type: object
+      required:
+        - accessURL
+      properties:
+        accessURL:
+          description: URL of the resource providing access to a distribution of the dataset (e.g. landing page)
+          type: string
+          format: uri
+          example: https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf
+          xml:
+            prefix: dcat
+            name: accessURL
+        downloadURL:
+          description: URL of a resource that provides a download of a distribution of the dataset
+          type: string
+          format: uri
+          example: https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf
+          xml:
+            prefix: dcat
+            name: downloadURL
+        description:
+          description: Description of the distribution as free text
+          type: string
+          example: Test-Dokument
+          xml:
+            prefix: dct
+            name: description
+        docType:
+          description: Type of document in relation to spatial planning or participation procedures
+          type: string
+          enum: [announcement, eiaReport, reportsRecommendation, additionalDocuments, hearingInformation, decision]
+          example: announcement
+          xml:
+            prefix: eia
+            name: docType
+        validUntil:
+          description: Date until which the distribution is valid or published
+          type: string
+          format: date-time
+          example: '2023-04-04T00:00:00.000Z'
+          xml:
+            prefix: eia
+            name: validUntil
+        format:
+          description: Format in which the distribution is available
+          type: string
+          example: application/pdf
+          xml:
+            prefix: dct
+            name: format
+        issued:
+          description: Date of creation of this distribution
+          type: string
+          format: date-time
+          example: '2023-04-04T00:00:00.000Z'
+          xml:
+            prefix: dct
+            name: issued
+        modified:
+          description: The most recent date on which the distribution was changed
+          type: string
+          format: date-time
+          example: '2023-04-04T00:00:00.000Z'
+          xml:
+            prefix: dct
+            name: modified
+        title:
+          description: Title of the distribution
+          type: string
+          example: Test-Dokument
+          xml:
+            prefix: dct
+            name: title
+        temporal:
+          description: Period of time during which the distribution is available or time from or until which the distribution is available
+          type: object
+          properties:
+            periodOfTime:
+              $ref: '#/components/schemas/period'
+          xml:
+            prefix: dct
+            name: temporal
+      xml:
+        prefix: dcat
+        name: Distribution
+    Error:
+      description: An error that is returned by the API
+      properties:
+        msg:
+          description: The error message
+          type: string
+          example: A detailed error message
+    landingPage:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+    location:
+      type: object
+      example: >
+        <dct:Location>
+          <dcat:bbox rdf:datatype="https://www.iana.org/assignments/media-types/application/vnd.geo+json">
+              {"type": "LineString", "coordinates": [[54.9, 14.5], [55.4, 15.3]]}
+          </dcat:bbox>
+          <locn:geometry rdf:datatype="https://www.iana.org/assignments/media-types/application/vnd.geo+json">
+              {"type": "Polygon", "coordinates": [[[55.22, 14.78], [55.2, 14.96], [55.14, 15.01], [55.124, 14.91], [55.102, 14.73]]]}
+          </locn:geometry>
+          <dcat:centroid rdf:datatype="https://www.iana.org/assignments/media-types/application/vnd.geo+json">
+              {"type": "Point", "coordinates": [55.07, 14.92] }
+          </dcat:centroid>
+          <locn:geographicName>Bornholm</locn:geographicName>
+        </dct:Location>
+      properties:
+        bbox:
+          description: The bounding box of the dataset
+          type: string
+          # not possible with openapi as of April 2023
+          # type: object
+          # properties:
+          #   typo:
+          #     type: string
+          #     example: https://www.iana.org/assignments/media-types/application/vnd.geo+json
+          #     xml:
+          #       attribute: true
+          #       prefix: rdf
+          #       name: datatype
+          example: '{"type": "LineString", "coordinates": [[54.9, 14.5], [55.4, 15.3]]}'
+          xml:
+            prefix: dcat
+            name: bbox
+        geometry:
+          description: Describes the geometry of the dataset
+          type: string
+          # not possible with openapi as of April 2023
+          # type: object
+          # properties:
+          #   typo:
+          #     type: string
+          #     example: https://www.iana.org/assignments/media-types/application/vnd.geo+json
+          #     xml:
+          #       attribute: true
+          #       prefix: rdf
+          #       name: datatype
+          example: '{"type": "Polygon", "coordinates": [[55.22, 14.78], [55.2, 14.96], [55.14, 15.01], [55.124, 14.91], [55.102, 14.73]]]}'
+          xml:
+            prefix: locn
+            name: geometry
+        centroid:
+          description: The geographic center (centroid) of the dataset's geometry
+          type: string
+          # not possible with openapi as of April 2023
+          # type: object
+          # properties:
+          #   typo:
+          #     type: string
+          #     example: https://www.iana.org/assignments/media-types/application/vnd.geo+json
+          #     xml:
+          #       attribute: true
+          #       prefix: rdf
+          #       name: datatype
+          example: {"type": "Point", "coordinates": [55.07, 14.92] }
+          xml:
+            prefix: dcat
+            name: centroid
+        geographicName:
+          description: Preferred name of the location
+          type: string
+          example: Bornholm
+          xml:
+            prefix: locn
+            name: geographicName
+      xml:
+        prefix: dct
+        name: Location
+    organization:
+      type: object
+      required:
+        - fn
+      properties:
+        fn:
+          type: string
+          example: Behörde für Wasserstraßen (BW) Beispielstadt
+          xml:
+            prefix: vcard
+            name: fn
+        countryName:
+          type: string
+          example: Deutschland
+          xml:
+            prefix: vcard
+            name: hasCountryName
+        locality:
+          type: string
+          example: Beispielstadt
+          xml:
+            prefix: vcard
+            name: hasLocality
+        postalCode:
+          type: string
+          example: 12345
+          xml:
+            prefix: vcard
+            name: hasPostalCode
+        region:
+          type: string
+          example: Hessen
+          xml:
+            prefix: vcard
+            name: hasRegion
+        streetAddress:
+          type: string
+          example: Beispielstraße 42
+          xml:
+            prefix: vcard
+            name: hasStreetAddress
+        email:
+          type: string
+          example: poststelle@bw.beispielstadt.de
+          xml:
+            prefix: vcard
+            name: hasEmail
+        telephone:
+          type: string
+          example: 01234 56789
+          xml:
+            prefix: vcard
+            name: hasTelephone
+        uid:
+          type: string
+          example: 62B5B8AD-DC4B-11D2-9A86-080000507261
+          xml:
+            prefix: vcard
+            name: hasUID
+        url:
+          type: string
+          format: uri
+          example: https://wassserstrassen.beispielstadt.de
+          xml:
+            prefix: vcard
+            name: hasURL
+      xml:
+        prefix: vcard
+        name: Organization
+    period:
+      type: object
+      properties:
+        startDate:
+          description: Start of a time period
+          type: string
+          format: date-time
+          example: 2023-06-30
+          xml:
+            prefix: dcat
+            name: startDate
+        endDate:
+          description: End of a time period
+          type: string
+          format: date-time
+          example: 2023-07-31
+          xml:
+            prefix: dcat
+            name: endDate
+      xml:
+        prefix: dct
+        name: PeriodOfTime
+    person:
+      type: object
+      required:
+        - fn
+      properties:
+        fn:
+          type: string
+          xml:
+            prefix: vcard
+            name: fn
+        countryName:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasCountryName
+        locality:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasLocality
+        postalCode:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasPostalCode
+        region:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasRegion
+        streetAddress:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasStreetAddress
+        email:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasEmail
+        telephone:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasTelephone
+        uid:
+          type: string
+          xml:
+            prefix: vcard
+            name: hasUID
+        url:
+          type: string
+          format: uri
+          xml:
+            prefix: vcard
+            name: hasURL
+      xml:
+        prefix: vcard
+        name: Person
+    processStep:
+      type: object
+      required:
+        - processStepType
+      properties:
+        id:
+          description: Unique identifier of the process step
+          type: string
+          example: ProcStep-0123
+          xml:
+            prefix: dct
+            name: identifier
+        processStepType:
+          description: Type of the process step for EIA procedures.
+          type: string
+          enum: [publicDisclosure, publicHearing, approvalDecision]
+          example: publicDisclosure
+          xml:
+            prefix: eia
+            name: processStepType
+        temporal:
+          description: Period in which the process step takes place
+          type: object
+          properties:
+            periodOfTime:
+              $ref: '#/components/schemas/period'
+          xml:
+            prefix: dct
+            name: temporal
+        distribution:
+          description: A distribution referenced by the process step
+          type: array
+          items:
+            properties:
+              distribution:
+                $ref: '#/components/schemas/distribution'
+            xml:
+              prefix: dcat
+              name: distribution
+      xml:
+        prefix: eia
+        name: ProcessStep
+    rdf:
+      description: The RDF root
+      type: object
+      properties:
+        namespace-adms:
+          type: string
+          example: http://www.w3.org/ns/adms#
+          xml:
+            name: xmlns:adms
+            attribute: true
+        namespace-dcat:
+          type: string
+          example: http://www.w3.org/ns/dcat#
+          xml:
+            name: xmlns:dcat
+            attribute: true
+        namespace-dcatde:
+          type: string
+          example: http://dcat-ap.de/def/dcatde/
+          xml:
+            name: xmlns:dcatde
+            attribute: true
+        namespace-dct:
+          type: string
+          example: http://purl.org/dc/terms/
+          xml:
+            name: xmlns:dct
+            attribute: true
+        namespace-eia:
+          type: string
+          example: http://specs.uvp-verbund.de/eia/
+          xml:
+            name: xmlns:eia
+            attribute: true
+        namespace-foaf:
+          type: string
+          example: http://xmlns.com/foaf/0.1/
+          xml:
+            name: xmlns:foaf
+            attribute: true
+        namespace-gml:
+          type: string
+          example: http://www.opengis.net/gml/3.2#
+          xml:
+            name: xmlns:gml
+            attribute: true
+        namespace-locn:
+          type: string
+          example: http://www.w3.org/ns/locn#
+          xml:
+            name: xmlns:locn
+            attribute: true
+        namespace-vcard:
+          type: string
+          example: http://www.w3.org/2006/vcard/ns#
+          xml:
+            name: xmlns:vcard
+            attribute: true
+        namespace-spdx:
+          type: string
+          example: http://spdx.org/rdf/terms#
+          xml:
+            name: xmlns:spdx
+            attribute: true
+      xml:
+        namespace: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+        prefix: rdf
+        name: RDF
+    records:
+      type: array
+      items:
+        $ref: '#/components/schemas/record'
+    record:
+      type: object
+      required:
+        - contact
+        - description
+        - eiaNumber
+        - id
+        - prelimAssessment
+        - procedureType
+        - publisher
+        - spatial
+        - title
+      properties:
+        procedureType:
+          description: The type of the EIA procedure.
+          type: string
+          enum: [approvalProcedure, spatialPlanningProcedure, routeDetermination, negPrelimScreening, foreignProcedure]
+          example: approvalProcedure
+          xml:
+            prefix: eia
+            name: procedureType
+        contact:
+          description: Contact for the dataset. Use of vCard is recommended
+          type: object
+          properties:
+            organization:
+              $ref: '#/components/schemas/organization'
+          xml:
+            prefix: dcat
+            name: contactPoint
+        description:
+          description: A description of the EIA procedure.
+          type: string
+          example: 'Hier steht eine Beschreibung des UVP Vorhabens.'
+          xml:
+            prefix: dct
+            name: description
+        id:
+          description: Unique identifier of the record in the context of the respective catalog
+          type: string
+          example: 'abcd-1234-efgh-5678'
+          xml:
+            prefix: dct
+            name: identifier
+        title:
+          description: Title of the dataset
+          type: string
+          example: 'Errichtung und Betrieb von drei Windkraftanlagen'
+          xml:
+            prefix: dct
+            name: title
+        issued:
+          description: Date of issue / publication of the dataset
+          type: string
+          format: date-time
+          example: 2023-01-01T00:00:00.000Z
+          xml:
+            prefix: dct
+            name: issued
+        modified:
+          description: Date of the last update or modification of the dataset
+          type: string
+          format: date-time
+          example: 2023-03-01T00:00:00.000Z
+          xml:
+            prefix: dct
+            name: modified
+        relation:
+          description: Reference to another dataset
+          type: string
+          example: TODO
+          xml:
+            prefix: dct
+            name: relation
+        eiaNumber:
+          description: The EIA number according to UVPG.
+          type: string
+          xml:
+            prefix: eia
+            name: number
+        prelimAssessment:
+          description: Indicates whether a preliminary assessment was carried out or not.
+          type: boolean
+          xml:
+            prefix: eia
+            name: prelimAssessment
+        decisionDate:
+          description: Date of the decision of the procedure.
+          type: string
+          format: date-time
+          xml:
+            prefix: eia
+            name: decisionDate
+        receiptDate:
+          description: Date on which the application was received.
+          type: string
+          format: date-time
+          xml:
+            prefix: eia
+            name: receiptDate
+        publisher:
+          description: The publisher of the dataset
+          type: object
+          properties:
+            agent:
+              $ref: '#/components/schemas/agent'
+          xml:
+            prefix: dct
+            name: publisher
+        spatial:
+          description: Spatial reference of the dataset
+          type: object
+          properties:
+            location:
+              $ref: '#/components/schemas/location'
+          xml:
+            prefix: dct
+            name: spatial
+        distribution:
+          description: A distribution referenced by the dataset
+          type: array
+          items:
+            properties:
+              distribution:
+                $ref: '#/components/schemas/distribution'
+            xml:
+              prefix: dcat
+              name: distribution
+        processStep:
+          description: A process step of the EIA process
+          type: array
+          items:
+            properties:
+              distribution:
+                $ref: '#/components/schemas/processStep'
+            xml:
+              prefix: eia
+              name: processStep
+      xml:
+        prefix: dcat
+        name: Dataset
+    Version:
+      type: object
+      description: A version
+      properties:
+        build:
+          type: object
+          description: A build description
+          properties:
+            version:
+              type: string
+            date:
+              type: string
+            commit_id:
+              type: string
+          required:
+            - version
+            - date
+  responses:
+    ConformanceDeclaration:
+      description: |-
+       The URIs of all conformance classes supported by the server. To support "generic" clients that want to access multiple OGC API Records implementations - and not "just" a specific API / server, the server declares the conformance classes it implements and conforms to.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/confClasses'
+        text/html:
+          schema:
+            type: string
+    LandingPage:
+      description: |-
+        The OGC API landing page for the EIA metadata information system. The landing page provides links to the API definition and the Record
+        Collections (path `/collections`), the conformance declaration (path '/conformance') and other resources in the API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/landingPage'
+        text/html:
+          schema:
+            type: string
+    200Success:
+      description: Successful operation
+    400InvalidInput:
+      description: Invalid input
+    401UnauthorizedRequest:
+      description: Unauthorized request
+    404NotFound:
+      description: Not found
+    415UnsupportedMediaType:
+      description: Unsupported media type
+    500GenericError:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
