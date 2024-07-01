@@ -1,0 +1,821 @@
+<!doctype html>
+<html>
+  <head>
+    <title>UVP API</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>UVP API</h1>
+    <div class="app-desc">This is the API for the UVP Information System.</div>
+    <div class="app-desc">More information: <a href="https://www.wemove.com">https://www.wemove.com</a></div>
+    <div class="app-desc">Contact Info: <a href="team@openapitools.org">team@openapitools.org</a></div>
+    <div class="app-desc">Version: 0.0.1</div>
+    <div class="app-desc">BasePath:/v1</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Capabilities">Capabilities</a></h4>
+  <ul>
+  <li><a href="#describeCollection"><code><span class="http-method">get</span> /collections/{collectionId}</code></a></li>
+  <li><a href="#getCollections"><code><span class="http-method">get</span> /collections</code></a></li>
+  <li><a href="#getLandingPage"><code><span class="http-method">get</span> /</code></a></li>
+  </ul>
+  <h4><a href="#Data">Data</a></h4>
+  <ul>
+  <li><a href="#getFeature"><code><span class="http-method">get</span> /collections/{collectionId}/items/{recordId}</code></a></li>
+  <li><a href="#getRecords"><code><span class="http-method">get</span> /collections/{collectionId}/items</code></a></li>
+  </ul>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#versionGet"><code><span class="http-method">get</span> /version</code></a></li>
+  </ul>
+
+  <h1><a name="Capabilities">Capabilities</a></h1>
+  <div class="method"><a name="describeCollection"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections/{collectionId}</code></pre></div>
+    <div class="method-summary">describe the record collection with id <code>collectionId</code> (<span class="nickname">describeCollection</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">collectionId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; local identifier of a collection default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Collection
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful operation
+        <a href="#Collection">Collection</a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Unexpected error
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCollections"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections</code></pre></div>
+    <div class="method-summary">the record collections in the dataset (<span class="nickname">getCollections</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Collections
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful operation
+        <a href="#Collections">Collections</a>
+    <h4 class="field-label">500</h4>
+    Unexpected error
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getLandingPage"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /</code></pre></div>
+    <div class="method-summary">landing page (<span class="nickname">getLandingPage</span>)</div>
+    <div class="method-notes">The landing page provides links to the API definition, the conformance
+statements and to the record collections in this dataset.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#landingPage">landingPage</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "description" : "description",
+  "links" : [ {
+    "hreflang" : "hreflang",
+    "rel" : "rel",
+    "length" : 0,
+    "href" : "href",
+    "type" : "type",
+    "title" : "title"
+  }, {
+    "hreflang" : "hreflang",
+    "rel" : "rel",
+    "length" : 0,
+    "href" : "href",
+    "type" : "type",
+    "title" : "title"
+  } ],
+  "title" : "title"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/html</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The landing page provides links to the API definition
+(link relations <code>service-desc</code> and <code>service-doc</code>),
+the Conformance declaration (path <code>/conformance</code>,
+link relation <code>conformance</code>), and the Record
+Collections (path <code>/collections</code>, link relation
+<code>data</code>).
+        <a href="#landingPage">landingPage</a>
+    <h4 class="field-label">500</h4>
+    Unexpected error
+        
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Data">Data</a></h1>
+  <div class="method"><a name="getFeature"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections/{collectionId}/items/{recordId}</code></pre></div>
+    <div class="method-summary">fetch a single record (<span class="nickname">getFeature</span>)</div>
+    <div class="method-notes">Fetch the record with id <code>recordId</code> in the record collection
+with id <code>collectionId</code>.
+Use content negotiation to request HTML or GeoJSON.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">collectionId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; local identifier of a collection default: null </div><div class="param">recordId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; local identifier of a record default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Record
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful operation
+        <a href="#Record">Record</a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Unexpected error
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getRecords"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections/{collectionId}/items</code></pre></div>
+    <div class="method-summary">fetch records (<span class="nickname">getRecords</span>)</div>
+    <div class="method-notes">Fetch records of the record collection with id <code>collectionId</code>.
+Every record in a dataset belongs to a collection. A dataset may
+consist of multiple record collections. A record collection is often a
+collection of records of a similar type, based on a common schema.
+Use content negotiation to request HTML or GeoJSON.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">collectionId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; local identifier of a collection default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">bbox (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; <p>Only records that have a geometry that intersects the bounding box are
+selected. The bounding box is provided as four or six numbers,
+depending on whether the coordinate reference system includes a
+vertical axis (height or depth):</p>
+<ul>
+<li>Lower left corner, coordinate axis 1</li>
+<li>Lower left corner, coordinate axis 2</li>
+<li>Minimum value, coordinate axis 3 (optional)</li>
+<li>Upper right corner, coordinate axis 1</li>
+<li>Upper right corner, coordinate axis 2</li>
+<li>Maximum value, coordinate axis 3 (optional)</li>
+</ul>
+<p>The coordinate reference system of the values is WGS 84 long/lat
+(http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different
+coordinate reference system is specified in the parameter <code>bbox-crs</code>.</p>
+<p>For WGS 84 longitude/latitude the values are in most cases the sequence
+of minimum longitude, minimum latitude, maximum longitude and maximum
+latitude.</p>
+<p>However, in cases where the box spans the antimeridian the first value
+(west-most box edge) is larger than the third value (east-most box
+edge).</p>
+<p>If the vertical axis is included, the third and the sixth number are
+the bottom and the top of the 3-dimensional bounding box.</p>
+<p>If a record has multiple spatial geometry properties, it is the
+decision of the server whether only a single spatial geometry property
+is used to determine the extent or all relevant geometries.</p>
+ default: null </div><div class="param">datetime (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; <p>Either a date-time or an interval, open or closed. Date and time
+expressions adhere to RFC 3339. Open intervals are expressed using
+double-dots.</p>
+<p>Examples:</p>
+<ul>
+<li>A date-time: &quot;2018-02-12T23:20:50Z&quot;</li>
+<li>A closed interval: &quot;2018-02-12T00:00:00Z/2018-03-18T12:31:12Z&quot;</li>
+<li>Open intervals: &quot;2018-02-12T00:00:00Z/..&quot; or &quot;../2018-03-18T12:31:12Z&quot;</li>
+</ul>
+<p>Only records that have a temporal property that intersects the value of
+<code>datetime</code> are selected.  It is left to the decision of the server
+whether only a single temporal property is used to determine the extent
+or all relevant temporal properties.</p>
+ default: null </div><div class="param">type (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The optional type parameter supports searching by resource type.  Only records whose type, as indicated by the value of the type core queryable, is equal to one of the listed values shall be selected. default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Records
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful operation
+        <a href="#Records">Records</a>
+    <h4 class="field-label">400</h4>
+    
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Unexpected error
+        
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="versionGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /version</code></pre></div>
+    <div class="method-summary">Get version information (<span class="nickname">versionGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Version">Version</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "build" : {
+    "date" : "date",
+    "version" : "version",
+    "commit_id" : "commit_id"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful operation
+        <a href="#Version">Version</a>
+    <h4 class="field-label">500</h4>
+    Unexpected error
+        
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Version"><code>Version</code> - </a></li>
+    <li><a href="#Version_build"><code>Version_build</code> - </a></li>
+    <li><a href="#collectionInfo"><code>collectionInfo</code> - </a></li>
+    <li><a href="#collections"><code>collections</code> - </a></li>
+    <li><a href="#extent"><code>extent</code> - </a></li>
+    <li><a href="#extent_spatial"><code>extent_spatial</code> - </a></li>
+    <li><a href="#extent_temporal"><code>extent_temporal</code> - </a></li>
+    <li><a href="#featureCollectionGeoJSON"><code>featureCollectionGeoJSON</code> - </a></li>
+    <li><a href="#geometryGeoJSON"><code>geometryGeoJSON</code> - </a></li>
+    <li><a href="#landingPage"><code>landingPage</code> - </a></li>
+    <li><a href="#link"><code>link</code> - </a></li>
+    <li><a href="#pointGeoJSON"><code>pointGeoJSON</code> - </a></li>
+    <li><a href="#polygonGeoJSON"><code>polygonGeoJSON</code> - </a></li>
+    <li><a href="#recordGeoJSON"><code>recordGeoJSON</code> - </a></li>
+    <li><a href="#recordGeoJSON_properties"><code>recordGeoJSON_properties</code> - </a></li>
+    <li><a href="#recordGeoJSON_properties_externalId_inner"><code>recordGeoJSON_properties_externalId_inner</code> - </a></li>
+    <li><a href="#recordGeoJSON_properties_themes_inner"><code>recordGeoJSON_properties_themes_inner</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Version"><code>Version</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>A version</div>
+    <div class="field-items">
+      <div class="param">build (optional)</div><div class="param-desc"><span class="param-type"><a href="#Version_build">Version_build</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Version_build"><code>Version_build</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>A build description</div>
+    <div class="field-items">
+      <div class="param">version </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">commit_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="collectionInfo"><code>collectionInfo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identifier of the collection used, for example, in URIs </div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> human readable title of the collection </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> a description of the records in the collection </div>
+<div class="param">links </div><div class="param-desc"><span class="param-type"><a href="#link">array[link]</a></span>  </div>
+<div class="param">extent (optional)</div><div class="param-desc"><span class="param-type"><a href="#extent">extent</a></span>  </div>
+<div class="param">itemType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> indicator about the type of the items in the collection (the
+default value is 'record' for OAPIR). </div>
+<div class="param">crs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> the list of coordinate reference systems supported by the service </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="collections"><code>collections</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">links </div><div class="param-desc"><span class="param-type"><a href="#link">array[link]</a></span>  </div>
+<div class="param">collections </div><div class="param-desc"><span class="param-type"><a href="#collectionInfo">array[collectionInfo]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="extent"><code>extent</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>The extent of the records in the collection. In the Core only spatial
+and temporal extents are specified. Extensions may add additional
+members to represent other extents, for example, thermal or pressure
+ranges.</div>
+    <div class="field-items">
+      <div class="param">spatial (optional)</div><div class="param-desc"><span class="param-type"><a href="#extent_spatial">extent_spatial</a></span>  </div>
+<div class="param">temporal (optional)</div><div class="param-desc"><span class="param-type"><a href="#extent_temporal">extent_temporal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="extent_spatial"><code>extent_spatial</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>The spatial extent of the records in the collection.</div>
+    <div class="field-items">
+      <div class="param">bbox (optional)</div><div class="param-desc"><span class="param-type"><a href="#array">array[array[BigDecimal]]</a></span> One or more bounding boxes that describe the spatial extent of
+the dataset. In the Core only a single bounding box is
+supported. Extensions may support additional areas. If multiple
+areas are provided, the union of the bounding boxes describes
+the spatial extent. </div>
+<div class="param">crs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Coordinate reference system of the coordinates in the spatial
+extent (property <code>bbox</code>). The default reference system is WGS
+84 longitude/latitude. In the Core this is the only supported
+coordinate reference system. Extensions may support additional
+coordinate reference systems and add additional enum values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">http://www.opengis.net/def/crs/OGC/1.3/CRS84</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="extent_temporal"><code>extent_temporal</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>The temporal extent of the records in the collection.</div>
+    <div class="field-items">
+      <div class="param">interval (optional)</div><div class="param-desc"><span class="param-type"><a href="#array">array[array[Date]]</a></span> One or more time intervals that describe the temporal extent of
+the dataset. The value <code>null</code> is supported and indicates an
+open time interval. In the Core only a single time interval is
+supported. Extensions may support multiple intervals. If
+multiple intervals are provided, the union of the intervals
+describes the temporal extent. format: date-time</div>
+<div class="param">trs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Coordinate reference system of the coordinates in the temporal
+extent (property <code>interval</code>). The default reference system is
+the Gregorian calendar. In the Core this is the only supported
+temporal coordinate reference system. Extensions may support
+additional temporal coordinate reference systems and add
+additional enum values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">http://www.opengis.net/def/uom/ISO-8601/0/Gregorian</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="featureCollectionGeoJSON"><code>featureCollectionGeoJSON</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">FeatureCollection</div>
+<div class="param">features </div><div class="param-desc"><span class="param-type"><a href="#recordGeoJSON">array[recordGeoJSON]</a></span>  </div>
+<div class="param">links (optional)</div><div class="param-desc"><span class="param-type"><a href="#link">array[link]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="geometryGeoJSON"><code>geometryGeoJSON</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">Polygon</div>
+<div class="param">coordinates </div><div class="param-desc"><span class="param-type"><a href="#array">array[array[array[BigDecimal]]]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="landingPage"><code>landingPage</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">links </div><div class="param-desc"><span class="param-type"><a href="#link">array[link]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="link"><code>link</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">href </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">rel (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">hreflang (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">length (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pointGeoJSON"><code>pointGeoJSON</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">Point</div>
+<div class="param">coordinates </div><div class="param-desc"><span class="param-type"><a href="#number">array[BigDecimal]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="polygonGeoJSON"><code>polygonGeoJSON</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">Polygon</div>
+<div class="param">coordinates </div><div class="param-desc"><span class="param-type"><a href="#array">array[array[array[BigDecimal]]]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="recordGeoJSON"><code>recordGeoJSON</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#URI">URI</a></span> A unique identifier of the catalogue record. format: uri</div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">Feature</div>
+<div class="param">geometry </div><div class="param-desc"><span class="param-type"><a href="#geometryGeoJSON">geometryGeoJSON</a></span>  </div>
+<div class="param">properties </div><div class="param-desc"><span class="param-type"><a href="#recordGeoJSON_properties">recordGeoJSON_properties</a></span>  </div>
+<div class="param">links (optional)</div><div class="param-desc"><span class="param-type"><a href="#link">array[link]</a></span> A list of links for navigating the API (e.g. prev, next, etc.). </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="recordGeoJSON_properties"><code>recordGeoJSON_properties</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">recordCreated (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> Date of creation of this record. format: date-time</div>
+<div class="param">recordUpdated (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The most recent date on which the record was changed. format: date-time</div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#URI">URI</a></span> The nature or genre of the resource. format: uri</div>
+<div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A human-readable name given to the resource. </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A free-text account of the resource. </div>
+<div class="param">keywords (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> The topic or topics of the resource. Typically represented
+using keywords, tags, key phrases, or classification codes.
+Recommended best practice is to use a controlled vocabulary. </div>
+<div class="param">externalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#recordGeoJSON_properties_externalId_inner">array[recordGeoJSON_properties_externalId_inner]</a></span> An identifier for the resource assigned by an external (to
+the catalogue) entity. </div>
+<div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> Date of creation of the resource. format: date-time</div>
+<div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> Most recent date on which the resource was changed. format: date-time</div>
+<div class="param">publisher (optional)</div><div class="param-desc"><span class="param-type"><a href="#URI">URI</a></span> Link to the entity making the resource available. Recommended
+best practice is to use a VCard
+(see https://www.w3.org/TR/vcard-rdf/). format: uri</div>
+<div class="param">themes (optional)</div><div class="param-desc"><span class="param-type"><a href="#recordGeoJSON_properties_themes_inner">array[recordGeoJSON_properties_themes_inner]</a></span> A knowledge organization system used to classify the resource. </div>
+<div class="param">formats (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> A list of available distributions of the resource. </div>
+<div class="param">contactPoint (optional)</div><div class="param-desc"><span class="param-type"><a href="#URI">URI</a></span> Link to relevant contact information.  Recommended best
+practice is to use a VCard
+(see https://www.w3.org/TR/vcard-rdf/). format: uri</div>
+<div class="param">extent (optional)</div><div class="param-desc"><span class="param-type"><a href="#extent">extent</a></span>  </div>
+<div class="param">associations (optional)</div><div class="param-desc"><span class="param-type"><a href="#link">array[link]</a></span> A list of links for accessing the resource (e.g. download
+link, access link) in one of the supported distribution
+formats and/or links to other resources associated with
+this resource. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="recordGeoJSON_properties_externalId_inner"><code>recordGeoJSON_properties_externalId_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">scheme (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A reference to an authority or identifier for a knowledge
+organization system from which the external identifier was
+obtained.  It is recommended that the identifier be a resolvable URI. </div>
+<div class="param">value </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The value of the identifier. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="recordGeoJSON_properties_themes_inner"><code>recordGeoJSON_properties_themes_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">scheme (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> An identifier for the knowledge organization system used
+to classify the resource.  It is recommended that the
+identifier be a resolvable URI. </div>
+<div class="param">concepts (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> One or more entity/concept identifers from this
+knowledge system. it is recommended that a resolvable
+URI be used for each entity/concept identifier. </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

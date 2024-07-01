@@ -1,0 +1,46 @@
+<rdf:RDF xml:base="https://specs.uvp-verbund.de/resource/processStepType"
+        xmlns:dc="http://purl.org/dc/elements/1.0/"
+        xmlns:dct="http://purl.org/dc/terms/"
+        xmlns:owl ="http://www.w3.org/2002/07/owl#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+        xmlns:skos-xl="http://www.w3.org/2008/05/skos-xl#">
+    <owl:Ontology rdf:about="https://specs.uvp-verbund.de/resource/processStepType">
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <owl:versionIRI rdf:resource="https://specs.uvp-verbund.de/resource/processStepType/1.0/"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">
+Zur kodierten Angabe der Art des Verfahrensschrittes:
+        </rdfs:comment>
+    </owl:Ontology>
+    <skos:ConceptScheme rdf:about="https://specs.uvp-verbund.de/resource/processStepType">
+        <rdfs:label xml:lang="de">Liste der Arten von Verfahrensschritten</rdfs:label>
+        <skos:prefLabel xml:lang="de">Liste der Arten von Verfahrensschritten</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">List of types of process steps</skos:prefLabel>
+        <dct:identifier>https://specs.uvp-verbund.de/resource/processStepType</dct:identifier>
+    </skos:ConceptScheme>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/processStepType#publicDisclosure">
+        <dc:identifier>publicDisclosure</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/processStepType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/processStepType"/>
+        <skos:prefLabel xml:lang="de">Öffentliche Auslegung</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Public disclosure</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/processStepType#publicDisclosure"/>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/processStepType#publicHearing">
+        <dc:identifier>publicHearing</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/processStepType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/processStepType"/>
+        <skos:prefLabel xml:lang="de">Erörterungstermin</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Public hearing</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/processStepType#publicHearing"/>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/processStepType#approvalDecision">
+        <dc:identifier>approvalDecision</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/processStepType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/processStepType"/>
+        <skos:prefLabel xml:lang="de">Entscheidung über die Zulassung</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Approval decision</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/processStepType#approvalDecision"/>
+    </skos:Concept>
+</rdf:RDF>

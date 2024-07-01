@@ -1,0 +1,62 @@
+<rdf:RDF xml:base="https://specs.uvp-verbund.de/resource/procedureType"
+        xmlns:dc="http://purl.org/dc/elements/1.0/"
+        xmlns:dct="http://purl.org/dc/terms/"
+        xmlns:owl ="http://www.w3.org/2002/07/owl#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+        xmlns:skos-xl="http://www.w3.org/2008/05/skos-xl#">
+    <owl:Ontology rdf:about="https://specs.uvp-verbund.de/resource/procedureType">
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <owl:versionIRI rdf:resource="https://specs.uvp-verbund.de/resource/procedureType/1.0/"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">
+Zur kodierten Angabe der jeweiligen Verfahrensart bei UVP-Verfahren:
+        </rdfs:comment>
+    </owl:Ontology>
+    <skos:ConceptScheme rdf:about="https://specs.uvp-verbund.de/resource/procedureType">
+        <rdfs:label xml:lang="de">Liste der Arten von UVP-Verfahren</rdfs:label>
+        <skos:prefLabel xml:lang="de">Liste der Arten von UVP-Verfahren</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">List of EIA procedure types</skos:prefLabel>
+        <dct:identifier>https://specs.uvp-verbund.de/resource/procedureType</dct:identifier>
+    </skos:ConceptScheme>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/procedureType#approvalProcedure">
+        <dc:identifier>approvalProcedure</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:prefLabel xml:lang="de">Zulassungsverfahren</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Approval procedure</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#approvalProcedure"/>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/procedureType#spatialPlanningProcedure">
+        <dc:identifier>spatialPlanningProcedure</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:prefLabel xml:lang="de">Vorgelagerte Verfahren - Raumordnungsverfahren</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Spatial planning procedure</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#spatialPlanningProcedure"/>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/procedureType#routeDetermination">
+        <dc:identifier>routeDetermination</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:prefLabel xml:lang="de">Vorgelagerte Verfahren - Linienbestimmung</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Route determination</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#routeDetermination"/>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/procedureType#negPrelimScreening">
+        <dc:identifier>negPrelimScreening</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:prefLabel xml:lang="de">Vorprüfung, negativ</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Negative preliminary screening</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#negPrelimScreening"/>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://specs.uvp-verbund.de/resource/procedureType#foreignProcedure">
+        <dc:identifier>foreignProcedure</dc:identifier>
+        <skos:topConceptOf rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:inScheme rdf:resource="https://specs.uvp-verbund.de/resource/procedureType"/>
+        <skos:prefLabel xml:lang="de">Ausländische Vorhaben</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Foreign procedure</skos:prefLabel>
+        <skos:exactMatch rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#foreignProcedure"/>
+    </skos:Concept>
+</rdf:RDF>
