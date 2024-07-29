@@ -62,13 +62,13 @@
         </dct:spatial>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-19T00:00:00.000Z</dct:modified>
         <eia:number>14</eia:number>
-        <eia:procedureType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcedureType/Zulassungsverfahren"/>
+        <eia:procedureType rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#approvalProcedure"/>
         <eia:prelimAssessment>false</eia:prelimAssessment>
         <eia:receiptDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01</eia:receiptDate>
         <eia:processStep>
             <eia:ProcessStep rdf:about="https://dcat-ap-eia.info/resource/authority/ProcessSteps/ProcStep-0123">
                 <dct:identifier>ProcStep-0123</dct:identifier>
-                <eia:processStepType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcessStepType/OeffAuslegung"/>
+                <eia:processStepType rdf:resource="https://specs.uvp-verbund.de/resource/processStepType#publicDisclosure"/>
                 <dcat:distribution rdf:resource="https://www.uvp-verbund.de/trefferanzeige?docuuid=F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Bekanntmachungstext%20-%20Auslegung%20Planunterlagen%201.%20Tektur.docx/distribution"/>
                 <dcat:distribution rdf:resource="https://www.uvp-verbund.de/trefferanzeige?docuuid=F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Verzeichnis%20der%20Entwurfsunterlagen%20f%C3%BCr%20einen%20Feststellungsentwurf%20-%201.%20TEKTUR.pdf/distribution"/>
                 <dct:temporal>
@@ -82,7 +82,7 @@
         <eia:processStep>
             <eia:ProcessStep rdf:about="https://dcat-ap-eia.info/resource/authority/ProcessSteps/ProcStep-0223">
                 <dct:identifier>ProcStep-0223</dct:identifier>
-                <eia:processStepType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcessStepType/OeffAuslegung"/>
+                <eia:processStepType rdf:resource="https://specs.uvp-verbund.de/resource/processStepType#publicDisclosure"/>
                 <dcat:distribution rdf:resource="https://www.uvp-verbund.de/documents/ingrid-group_ige-iplug-sn/F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Bekanntmachungstext.docx/distribution"/>
                 <dcat:distribution rdf:resource="https://www.uvp-verbund.de/documents/ingrid-group_ige-iplug-sn/F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Verzeichnis%20der%20Entwurfsunterlagen.pdf/distribution"/>
                 <dct:temporal>
@@ -103,7 +103,7 @@
         <dcat:downloadURL rdf:resource="https://www.uvp-verbund.de/documents/ingrid-group_ige-iplug-sn/F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Bekanntmachungstext%20-%20Auslegung%20Planunterlagen%201.%20Tektur.docx"/>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
-        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/AnnouncementDocs"/>
+        <eia:docType rdf:resource="https://specs.uvp-verbund.de/resource/docType#announcement"/>
         <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</eia:validUntil>
     </dcat:Distribution>
 
@@ -115,7 +115,7 @@
         <dcat:downloadURL rdf:resource="https://www.uvp-verbund.de/documents/ingrid-group_ige-iplug-sn/F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Verzeichnis%20der%20Entwurfsunterlagen%20f%C3%BCr%20einen%20Feststellungsentwurf%20-%201.%20TEKTUR.pdf"/>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
-        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/DecisionDocs"/>
+        <eia:docType rdf:resource="https://specs.uvp-verbund.de/resource/docType#decision"/>
         <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</eia:validUntil>
     </dcat:Distribution>
 
@@ -127,7 +127,7 @@
         <dcat:downloadURL rdf:resource="https://www.uvp-verbund.de/documents/ingrid-group_ige-iplug-sn/F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Bekanntmachungstext.docx"/>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-05-01T00:00:00.000Z</dct:modified>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-05-01T00:00:00.000Z</dct:issued>
-        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/DecisionDocs"/>
+        <eia:docType rdf:resource="https://specs.uvp-verbund.de/resource/docType#decision"/>
         <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-06-30T00:00:00.000Z</eia:validUntil>
     </dcat:Distribution>
 
@@ -139,7 +139,7 @@
       <dcat:downloadURL rdf:resource="https://www.uvp-verbund.de/documents/ingrid-group_ige-iplug-sn/F3F5D4F8-39A8-4E65-A2C4-B54E380D0FF8/Verzeichnis%20der%20Entwurfsunterlagen.pdf"/>
       <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-05-01T00:00:00.000Z</dct:modified>
       <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-05-01T00:00:00.000Z</dct:issued>
-      <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/DecisionDocs"/>
+      <eia:docType rdf:resource="https://specs.uvp-verbund.de/resource/docType#decision"/>
       <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-06-30T00:00:00.000Z</eia:validUntil>
    </dcat:Distribution>
 </rdf:RDF>

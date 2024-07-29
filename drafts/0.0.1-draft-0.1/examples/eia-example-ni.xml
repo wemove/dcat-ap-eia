@@ -72,20 +72,20 @@
                 </dcat:centroid>
                 <locn:geographicName>Suhlendorf</locn:geographicName>
                 <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">
-                    POLYGON (10.7 52.91, 10.8 52.91, 10.8 52.93, 10.7 52.93, 10.7 52.91))
+                    POLYGON ((10.7 52.91, 10.8 52.91, 10.8 52.93, 10.7 52.93, 10.7 52.91))
                 </locn:geometry>
             </dct:Location>
         </dct:spatial>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
         <eia:number>1-1-1</eia:number>
-        <eia:procedureType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcedureType/Zulassungsverfahren"/>
+        <eia:procedureType rdf:resource="https://specs.uvp-verbund.de/resource/procedureType#approvalProcedure"/>
         <eia:prelimAssessment>true</eia:prelimAssessment>
         <eia:receiptDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01</eia:receiptDate>
         <eia:processStep rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcessSteps/0123-4567-7890/processStep"/>
     </dcat:Dataset>
-    <eia:ProcessStep rdf:about="https://dcat-ap-eia.info/resource/authority/ProcessSteps/0123-4567-7890/processStep"> <!--ins dataset hinein schieben, da nicht unabhängig-->
+    <eia:ProcessStep rdf:about="https://dcat-ap-eia.info/resource/authority/ProcessSteps/0123-4567-7890/processStep">
         <dct:identifier>0000-0000-0000</dct:identifier>
-        <eia:processStepType rdf:resource="https://dcat-ap-eia.info/resource/authority/ProcessStepType/OeffAuslegung"/>
+        <eia:processStepType rdf:resource="https://specs.uvp-verbund.de/resource/processStepType#publicDisclosure"/>
         <dcat:distribution rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc/distribution"/>
         <dcat:distribution rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf/distribution"/>
         <dct:temporal>
@@ -103,8 +103,8 @@
         <dcat:downloadURL rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Bekanntmachung%20Genehmigungsbescheid%20I20200006.doc"/>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
-        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/AnnouncementDocs"/>
-        <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z></eia:validUntil>
+        <eia:docType rdf:resource="https://specs.uvp-verbund.de/resource/docType#announcement"/>
+        <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</eia:validUntil>
     </dcat:Distribution>
     <dcat:Distribution rdf:about="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf/distribution">
         <dct:title xml:lang="de">Entscheidung</dct:title>
@@ -114,7 +114,7 @@
         <dcat:downloadURL rdf:resource="https://uvp.niedersachsen.de/documents/ingrid-group_ige-iplug-ni/84DCE4DA-C01A-4084-82D8-BEB95BFBD3DA/Genehmigungsbescheid%20I20200006.pdf"/>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:modified>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</dct:issued>
-        <eia:docType rdf:resource="https://dcat-ap-eia.info/resource/authority/DocType/DecisionDocs"/>
-        <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z></eia:validUntil>
+        <eia:docType rdf:resource="https://specs.uvp-verbund.de/resource/docType#decision"/>
+        <eia:validUntil rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-01T00:00:00.000Z</eia:validUntil>
     </dcat:Distribution>
 </rdf:RDF>
