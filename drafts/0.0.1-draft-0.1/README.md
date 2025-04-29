@@ -10,7 +10,7 @@ If a change to the API is to be made, make sure this change is reflected in all 
 - [ ] documentation: [doc-eia.html](doc-eia.html)
 - [ ] UML diagram: [dcat-ap-eia.eapx](dcat-ap-eia.eapx) and [DCAT-AP.EIA.jpg](DCAT-AP.EIA.jpg)
 - [ ] SHACL shapefile: [shacl/dcat-ap-eia_shacl-shapes.ttl](shacl/dcat-ap-eia_shacl-shapes.ttl)
-- [ ] [codelists](codelists)
+- [ ] [Codelists](codelists)
 - [ ] [examples](examples)
 
 If the changes encompass the `SHACL` shapefile or the examples, ensure that the shapefile still correctly validates them all, e.g. using
@@ -32,5 +32,6 @@ Alternatively, you can manually create a release:
   - the `version` property in `api-eia.yml`
   - the version in `README.md`
 - Merge `develop` into `main`
+- In `develop`, add a new dummy entry to the changelog
 
 Finally, announce the new version via mail and ADO.

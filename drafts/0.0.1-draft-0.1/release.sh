@@ -50,6 +50,10 @@ fi
 # validate all EIA examples using the `SHACL` shapefile
 echo -e "Validating EIA examples..."
 for file in "$(dirname "$0")/examples"/*; do
+    filename=$(basename "$file")
+    if [[ $filename != eia* ]]; then
+        continue
+    fi
     echo -n "  validating $file ... "
     if validate_example "$file"; then
         echo "ok"
