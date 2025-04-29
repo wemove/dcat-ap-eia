@@ -1034,7 +1034,6 @@ components:
         - contact
         - description
         - eiaNumber
-        - id
         - prelimAssessment
         - procedureType
         - publisher
@@ -1066,7 +1065,7 @@ components:
             prefix: dct
             name: description
         id:
-          description: Unique identifier of the record in the context of the respective catalog
+          description: Unique identifier of the record in the context of the UVP catalog
           type: string
           example: 'abcd-1234-efgh-5678'
           xml:
@@ -1096,14 +1095,14 @@ components:
             prefix: dct
             name: modified
         relation:
-          description: Reference to another dataset
+          description: The identifier of the originating dataset
           type: string
-          example: TODO
+          example: 'abcd-1234-efgh-5678'
           xml:
             prefix: dct
             name: relation
         eiaNumber:
-          description: The EIA number according to UVPG.
+          description: EIA number according to UVPG.
           type: string
           xml:
             prefix: eia
