@@ -371,9 +371,9 @@
           <thead><tr><th>URI:</th><th><a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a></th></tr></thead>
           <tbody>
           <tr><td class="prop">Verbindlichkeit:</td><td>Verpflichtend</td></tr>
-          <tr><td class="prop">Definition:</td><td>Ansprechpartner zum Datensatz. Die Benutzung von vCard wird empfohlen.</td></tr>
-          <tr><td class="prop">Typ/Wertebereich:</td><td><a href="http://www.w3.org/TR/vcard-rdf/#Kind"><code>vcard:Kind</code></a></td></tr>
-          <tr><td class="prop">Anwendungshinweis:</td><td>Der Ansprechpartner stellt im UVP Anwendungsfall die verfahrensführende Behörde dar.</td></tr>
+          <tr><td class="prop">Definition:</td><td>Ansprechpartner zum Datensatz. Die Benutzung von vCard wird erwartet.</td></tr>
+          <tr><td class="prop">Typ/Wertebereich:</td><td><a href="http://www.w3.org/TR/vcard-rdf/#Kind"><code>vcard:Organization</code></a></td></tr>
+          <tr><td class="prop">Anwendungshinweis:</td><td>Der Ansprechpartner stellt im UVP Anwendungsfall die verfahrensführende Behörde dar. Die erwarteten Eigenschaften sind unter <a href="#class-kind">Klasse: Organisation (Kind)</a> zu finden.</a></td></tr>
           </tbody>
           </table>
        </section>
@@ -825,7 +825,7 @@
       </section>
 
       <section id="Class:Agent">
-        <h3 id="class-agent">Klasse: Organisation</h3>
+        <h3 id="class-agent">Klasse: Organisation (Agent)</h3>
 
         <table class="definition">
           <thead><tr><th>URI der Klasse:</th><th>foaf:Agent</th></tr></thead>
@@ -859,6 +859,47 @@
              <tr><td class="prop">Definition:</td><td>Diese Eigenschaft bezieht sich auf den Typ der verantwortlichen Stelle,
               die die Ressource bereitstellt.</td></tr>
              <tr><td class="prop">Typ/Wertebereich:</td><td><a href="http://www.w3.org/2004/02/skos/core#Concept"><code>skos:Concept</code></a>; zu beachten sind hier die Vorgaben aus DCAT-AP.de zum <a href="https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-adms-publisher">zulässigen ADMS Vokabular</a> (siehe auch den entsprechenden Eintrag im <a href="https://www.dcat-ap.de/def/dcatde/2.0/implRules/#angaben-zum-herausgeber">Konventionenhandbuch</a>)</td></tr>
+            </tbody>
+          </table>
+       </section>
+
+      </section>
+
+      <section id="Class:Kind">
+        <h3 id="class-kind">Klasse: Organisation (Kind)</h3>
+
+        <table class="definition">
+          <thead><tr><th>URI der Klasse:</th><th>vcard:Organization</th></tr></thead>
+          <tbody>
+            <tr><td class="prop">Verbindlichkeit:</td><td>Verpflichtend</td></tr>
+            <tr><td class="prop">Definition:</td><td>Eine Stelle oder Person, welche mit Katalogen und Datensätzen in unterschiedlichen Rollenausprägungen assoziiert ist.</td></tr>
+            <tr><td class="prop">Anwendungshinweis:</td><td>Untenstehend werden nur die für den UVP-Verwendungszweck verpflichtenden Eigenschaften aufgelistet. Eine vollständige Übersicht über die vcard-Eigenschaften findet sich unter <a href="https://www.rfc-editor.org/rfc/rfc6350.html">https://www.rfc-editor.org/rfc/rfc6350.html</a></td></tr>
+          </tbody>
+        </table>
+
+        <section id="Property:name">
+          <h4 id="property-name">Eigenschaft: Name</h4>
+
+           <table class="definition">
+            <thead><tr><th>URI:</th><th>vcard:fn</th></tr></thead>
+            <tbody>
+             <tr><td class="prop">Verbindlichkeit:</td><td>Verpflichtend</td></tr>
+             <tr><td class="prop">Definition:</td><td>Diese Eigenschaft enthält den Namen der verantwortlichen Stelle.</td></tr>
+             <tr><td class="prop">Typ/Wertebereich:</td><td><a href="https://www.w3.org/TR/rdf-schema/#ch_literal"><code title="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</code></a></td></tr>
+            </tbody>
+          </table>
+       </section>
+
+        <section id="Property:type">
+          <h4 id="property-type">Eigenschaft: E-Mailadresse</h4>
+
+           <table class="definition">
+            <thead><tr><th>URI:</th><th>vcard:hasEmail</th></tr></thead>
+            <tbody>
+             <tr><td class="prop">Verbindlichkeit:</td><td>Verpflichtend</td></tr>
+             <tr><td class="prop">Definition:</td><td>Diese Eigenschaft enthält die E-Mailadresse der verantwortlichen Stelle.</td></tr>
+             <tr><td class="prop">Typ/Wertebereich:</td><td><a href="https://www.w3.org/TR/rdf-schema/#ch_literal"><code title="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</code></a></td></tr>
+             <tr><td class="prop">Anwendungshinweis:</td><td>Durch die E-Mailadresse wird die Organisation eindeutig identifiziert.</td></tr>
             </tbody>
           </table>
        </section>

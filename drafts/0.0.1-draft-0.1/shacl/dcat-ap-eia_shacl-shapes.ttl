@@ -490,6 +490,25 @@
 #     ] ;
 #     sh:targetClass dct:MediaTypeOrExtent .
 
+:Organization_Shape
+    a sh:NodeShape ;
+    sh:name "Organization"@en ;
+    # mandatory
+    sh:property [
+        sh:path vcard:fn;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] , [
+        sh:path vcard:hasEmail ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:closed false ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:targetClass vcard:Organization .
+
 :PeriodOfTime_Shape
     a sh:NodeShape ;
     sh:name "PeriodOfTime"@en ;
