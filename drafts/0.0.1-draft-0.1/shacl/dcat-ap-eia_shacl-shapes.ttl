@@ -110,19 +110,19 @@
     # mandatory
     sh:property [
         sh:path dct:modified ;
-        sh:node :DateOrDateTimeDataType_Shape ;
+        sh:shape :DateOrDateTimeDataType_Shape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ], [
         sh:path foaf:primaryTopic ;
-        sh:node :DcatResource_Shape ;
+        sh:shape :DcatResource_Shape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     # recommended
     sh:property [
         sh:path dct:issued ;
-        sh:node :DateOrDateTimeDataType_Shape ;
+        sh:shape :DateOrDateTimeDataType_Shape ;
         sh:maxCount 1 ;
     ], [
         sh:path dct:title ;
