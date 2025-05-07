@@ -51,7 +51,10 @@ class UML_Relation():
     orientation: str = ''
 
     def __repr__(self):
-        return f'{self.source_id} -{self.orientation}-> "  <back:#FFFFFF>{self.property.cardinality}</back>  " {self.target_id} : "  <back:#FFFFFF>{self.property.name}</back>  \\n  <back:#FFFFFF><<{self.property.requirement}>></back>  "'
+        if self.property is not None:
+            return f'{self.source_id} -{self.orientation if self.orientation is not None else ""}-> "  <back:#FFFFFF>{self.property.cardinality}</back>  " {self.target_id} : "  <back:#FFFFFF>{self.property.name}</back>  \\n  <back:#FFFFFF><<{self.property.requirement}>></back>  "'
+        else:
+            return f'{self.source_id} -{self.orientation if self.orientation is not None else ""}-> {self.target_id}'
 
 @dataclass
 class UML_Template():

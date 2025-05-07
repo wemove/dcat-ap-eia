@@ -11,6 +11,9 @@ from rdflib import BNode, Graph, Literal, RDF, RDFS, SH, URIRef
 # change working directory to script directory
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+# this is hardcoded to obtain a nicer diagram
+with open('orientations.json', 'r') as f:
+    orientations = json.load(f)
 
 def extract_cardinalities_from_shacl(shacl_path):
     def get_prefix_name(url):
@@ -24,10 +27,6 @@ def extract_cardinalities_from_shacl(shacl_path):
         return class_id
 
     prefix_dict = {}
-
-    # this is hardcoded to obtain a nicer diagram
-    with open('orientations.json', 'r') as f:
-        orientations = json.load(f)
 
     g = Graph()
     g.parse(shacl_path, format='turtle')
@@ -124,6 +123,12 @@ def extract_uml(uri: str):
         if uml_relation.target_id not in uml_classes:
             uml_relations.remove(uml_relation)
             uml_classes[uml_relation.source_id].add_property(uml_relation.property)
+
+    # add "hidden" relations that affect the diagram without being displayed
+    for relation, orientation in orientations.items():
+        if '[hidden]' in orientation:
+            source_id, target_id, *_ = relation.split('-')
+            uml_relations.append(UML_Relation(source_id, target_id, None, orientation))
 
     return UML_Template(uml_classes.values(), uml_relations)
 
