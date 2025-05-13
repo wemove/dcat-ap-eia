@@ -1,4 +1,5 @@
 #!/bin/env python3
+import os
 from dataclasses import dataclass
 from plantweb.render import render
 from textwrap import dedent
@@ -57,12 +58,14 @@ class UML_Template():
     classes: List[UML_Class]
     relations: List[UML_Relation]
 
-    def write(self, target):
-        with open(target, 'w') as f:
+    def write(self, target_path):
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        with open(target_path, 'w') as f:
             f.write(str(self))
     
     def render(self, target_path):
         response = render(str(self), engine='plantuml', format='png', cacheopts={ 'use_cache': False })
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
         with open(target_path, 'wb') as f:
             f.write(response[0])
 
