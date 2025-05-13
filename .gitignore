@@ -1,6 +1,9 @@
 # folders
 .idea
 .vscode
+__pycache__
+output
+venv
 
 # files
 *.ldb
