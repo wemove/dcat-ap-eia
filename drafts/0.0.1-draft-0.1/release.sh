@@ -64,12 +64,20 @@ for file in "$(dirname "$0")/examples"/*; do
     fi
 done
 
+# do not automatically tidy the documentation, but check if it is tidy
+echo -e "Validating documentation tidiness..."
+diff $(dirname "$0")/doc-eia.html <(tidy -config $(dirname "$0")/scripts/tidy_doc/tidy.config -quiet $(dirname "$0")/doc-eia.html)
+if [ $? -ne 0 ]; then
+    echo "Documentation is not formatted, please run tidy (scripts/tidy_doc). Aborting..."
+    exit 1
+fi
+
 # choose new version type
 echo -en "\nWhich version do you want to release [major, minor, bugfix]? "
 read VERSION_TYPE
 if [ "${VERSION_TYPE}" != "major" ] && [ "${VERSION_TYPE}" != "minor" ] && [ "${VERSION_TYPE}" != "bugfix" ]; then
     echo "Version has to be one of [major, minor, bugfix], aborting..."
-    exit
+    exit 1
 fi
 
 # build new version number
@@ -101,7 +109,7 @@ echo -en "\nContinue [y/n]? "
 read CONTINUE_RELEASE
 if [ "${CONTINUE_RELEASE}" != "y" ]; then
     echo "You cancelled the release process, aborting..."
-    exit
+    exit 1
 fi
 
 # go to project root
@@ -110,7 +118,7 @@ pushd "$(dirname "$0")/../../" > /dev/null || exit 1
 # set the new version in changelog (first check if it is up-to-date)
 if ! grep -Fq "## xxxx-xx-xx - dev" CHANGELOG.md; then
     echo "The changelog must contain the line \"## xxxx-xx-xx - dev\", aborting..."
-    exit
+    exit 1
 fi
 sed -i "s@## xxxx-xx-xx - dev@## $(date --iso-8601) - ${NEXT_VERSION}@g" CHANGELOG.md
 
