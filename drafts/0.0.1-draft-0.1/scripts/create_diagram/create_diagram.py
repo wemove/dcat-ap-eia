@@ -97,17 +97,17 @@ def extract_uml(uri: str):
 
     # extract classes
     for class_section in soup.find_all('section', id=lambda id: id and id.startswith('Class:')):
-        class_name = class_section.select_one('th:nth-child(2)').text
+        class_name = class_section.select_one('th:nth-child(2)').text.strip()
         class_id = class_name.replace(':', '')
-        requirement = requirements[class_section.select_one('tr:nth-child(1) td:nth-child(2)').text]
+        requirement = requirements[class_section.select_one('tr:nth-child(1) td:nth-child(2)').text.strip()]
         uml_class = UML_Class(class_id, class_name, requirement, [])
 
         # extract properties
         relations = cardinalities[class_id]['relations']
         properties = class_section.select('section[id^="Property:"]')
         for property_section in properties:
-            property_name = property_section.select_one('th:nth-child(2)').text
-            requirement = requirements[property_section.select_one('tr:nth-child(1) td:nth-child(2)').text]
+            property_name = property_section.select_one('th:nth-child(2)').text.strip()
+            requirement = requirements[property_section.select_one('tr:nth-child(1) td:nth-child(2)').text.strip()]
             if property_name in relations: # and (uml_classes[relations[property_name].target_id].properties) > 0:
                 uml_relation = relations[property_name]
                 uml_relation.property.requirement = requirement
