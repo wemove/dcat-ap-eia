@@ -66,9 +66,9 @@ done
 
 # do not automatically tidy the documentation, but check if it is tidy
 echo -e "Validating documentation tidiness..."
-diff $(dirname "$0")/doc-eia.html <(tidy -config $(dirname "$0")/scripts/tidy_doc/tidy.config -quiet $(dirname "$0")/doc-eia.html)
+diff $(dirname "$0")/doc-eia.html <(tidy -config $(dirname "$0")/scripts/tidy/tidy.config -quiet $(dirname "$0")/doc-eia.html)
 if [ $? -ne 0 ]; then
-    echo "Documentation is not formatted, please run tidy (scripts/tidy_doc). Aborting..."
+    echo "Documentation is not formatted, please run tidy (scripts/tidy). Aborting..."
     exit 1
 fi
 
