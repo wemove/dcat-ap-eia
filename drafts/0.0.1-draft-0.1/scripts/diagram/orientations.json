@@ -1,0 +1,14 @@
+{
+    "dcatCatalog-dcatDataset-dcat:dataset": "right",
+    "dcatCatalog-foafAgent-dct:publisher": "right",
+    "dcatCatalog-skosConceptScheme-dcat:themeTaxonomy": "",
+    "dcatCatalog-dcatCatalogRecord-dcat:record": "up",
+    "dcatDataset-vcardOrganization-dcat:contactPoint": "",
+    "dcatDataset-foafAgent-dct:publisher": "left",
+    "dcatDataset-dctLocation-dct:spatial": "up",
+    "dcatDataset-dcatDistribution-dcat:distribution": "right",
+    "dcatDataset-eiaProcessStep-eia:processStep": "right",
+    "dcatDistribution-dctPeriodOfTime-dct:temporal": "right",
+    "eiaProcessStep-dcatDistribution-dcat:distribution": "up",
+    "eiaProcessStep-dctPeriodOfTime-dct:temporal": "right"
+}
