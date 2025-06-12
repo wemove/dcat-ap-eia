@@ -9,7 +9,7 @@ If a change to the API is to be made, make sure this change is reflected in all 
 - [ ] OpenAPI specification: [api-eia.yml](api-eia.yml)
 - [ ] Documentation: [doc-eia.html](doc-eia.html)
 - [ ] SHACL shapefile: [shacl/dcat-ap-eia-shapes.ttl](shacl/dcat-ap-eia-shapes.ttl)
-- [ ] UML diagram: [DCAT-AP-EIA.jpg](DCAT-AP-EIA.jpg)
+- [ ] UML diagram: [DCAT-AP.EIA.jpg](DCAT-AP.EIA.jpg)
   - no manual changes necessary; done via script, see end of paragraph
 - [ ] Codelists: [codelists](codelists)
 - [ ] Examples: [examples/eia-example-full.xml](examples/eia-example-full.xml), [examples/eia-example-03.xml](examples/eia-example-03.xml)
