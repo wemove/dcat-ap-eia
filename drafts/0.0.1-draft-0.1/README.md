@@ -34,7 +34,8 @@ Alternatively, you can manually create a release:
   - the `latestVersion` property in `doc-eia.html`
   - the `version` property in `api-eia.yml`
   - the version in `README.md`
+- Also update the `DCATAPEIA_VERSION` in the [Dockerfile](../../docker/Dockerfile)
 - Merge `develop` into `main`
-- In `develop`, add a new dummy entry to the changelog
+- In `develop`, add a new dummy entry to the changelog and revert the changes to the Dockerfile
 
 Finally, announce the new version via mail and ADO.

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 50px;
+            }
+            ol {
+                list-style: none;
+                counter-reset: num;
+            }
+            li {
+                margin: 10px 0;
+            }
+            li::before {
+                counter-increment: num;
+                content: '§\a0 5.' counters(num, '.') ' ';
+                margin-right: 5px;
+            }
+            p, footer {
+                margin: 36px 0;
+            }
+            p [lang], footer [lang] {
+                display: block;
+                line-height: 120%;
+                margin: 8px 0;
+            }
+            footer {
+                margin-top: 72px;
+            }
+            [lang="de"] {
+            }
+            [lang="en"] {
+                font-style: italic;
+            }
+        </style>
+        <title>DCAT-AP.EIA Codelisten-Repository / DCAT-AP.EIA Codelist Repository</title>
+    </head>
+    <body>
+        <h1>
+            <span lang="de">DCAT-AP.EIA Codelisten-Repository</span> / 
+            <span lang="en">DCAT-AP.EIA Codelist Repository</span>
+        </h1>
+        <p>
+            <span lang="de">
+                Dieses Repository enthält die Codelisten, die in der
+                <a href="../doc-eia-latest.html" title="DCAT-AP.EIA Spezifikation">Spezifikation für DCAT-AP.EIA {DCATAPEIA_VERSION}</a> verwendet werden.
+            </span>
+            <span lang="en">
+                This repository houses the codelists used in the
+                <a href="../doc-eia-latest.html" title="DCAT-AP.EIA specification">specification for DCAT-AP.EIA {DCATAPEIA_VERSION} (German)</a>.
+            </span>
+        </p>
+        <p>
+            <span lang="de">Die Codelisten können hier abgerufen werden:</span>
+            <span lang="en">You can find the available codelists below:</span>
+        </p>
+        <ol>
+            <li><a href="./procedureType" title="Art eines UVP-Verfahrens / Procedure Type">
+                <span lang="de">Art eines UVP-Verfahrens</span> / 
+                <span lang="en">Procedure Type</span>
+            </a></li>
+            <li><a href="./docType" title="Dokumententyp / Document Type">
+                <span lang="de">Dokumententyp</span> / 
+                <span lang="en">Document Type</span>
+            </a></li>
+            <li><a href="./processStepType" title="Art eines UVP-Verfahrensschrittes / Procedure Step Type">
+                <span lang="de">Art eines UVP-Verfahrensschrittes</span> / 
+                <span lang="en">Procedure Step Type</span>
+            </a></li>
+        </ol>
+        <footer>
+            <span lang="de">
+                Die DCAT-AP.EIA Spezifikation wird auf github gepflegt:  
+                <a href="https://github.com/wemove/dcat-ap-eia/" title="DCAT-AP.EIA Spezifikation">https://github.com/wemove/dcat-ap-eia/</a>
+            </span>
+            <span lang="en">
+                The DCAT-AP.EIA specification is being maintained on github:
+                <a href="https://github.com/wemove/dcat-ap-eia/" title="DCAT-AP.EIA specification">https://github.com/wemove/dcat-ap-eia/</a>.
+            </span>
+        </footer>
+    </body>
+</html>

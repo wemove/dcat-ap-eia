@@ -144,6 +144,8 @@ sed -i "s@latestVersion: \".*\",@latestVersion: \"https://github.com/wemove/dcat
 sed -i "s@version: x.y.z@version: ${NEXT_VERSION}@g" releases/${NEXT_VERSION}/api-eia.yml
 # in the new version folder, change the version in `README.md`
 sed -i "s@DCAT-AP\.EIA v\?${ESC_LATEST_VERSION}@DCAT-AP.EIA ${NEXT_VERSION}@g" releases/${NEXT_VERSION}/README.md
+# update the `DCATAPEIA_VERSION` in the Dockerfile
+sed -i "s@ENV DCATAPEIA_VERSION=${ESC_DRAFT_VERSION}@ENV DCATAPEIA_VERSION=${NEXT_VERSION}@g" docker/Dockerfile
 
 # commit, merge, tag new release
 echo
@@ -158,6 +160,9 @@ git checkout develop
 echo -e "\nUpdating changelog ..."
 sed -i "s@# Changelog@# Changelog\n\n## xxxx-xx-xx - dev\n\n...@g" CHANGELOG.md
 git add CHANGELOG.md
+echo -e "\nUpdating version in Dockerfile ..."
+sed -i "s@ENV DCATAPEIA_VERSION=${NEXT_VERSION}@ENV DCATAPEIA_VERSION=${DRAFT_VERSION}@g" docker/Dockerfile
+git add docker/Dockerfile
 git commit -m "Set next development version"
 
 echo -e "\nThe new ${VERSION_TYPE} release ${NEXT_VERSION} has been created locally."

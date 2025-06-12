@@ -2,7 +2,7 @@
 
 ## xxxx-xx-xx - dev
 
-...
+* [Deployment] Add Docker image 
 
 ## 2025-06-03 - 0.1.1
 
