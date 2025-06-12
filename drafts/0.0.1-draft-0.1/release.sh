@@ -132,7 +132,6 @@ cp -r drafts/0.0.1-draft-0.1/examples/eia* releases/${NEXT_VERSION}/examples/
 cp -r drafts/0.0.1-draft-0.1/shacl releases/${NEXT_VERSION}/
 cp -r drafts/0.0.1-draft-0.1/styles releases/${NEXT_VERSION}/
 cp drafts/0.0.1-draft-0.1/api-eia.yml releases/${NEXT_VERSION}/
-cp drafts/0.0.1-draft-0.1/dcat-ap-eia.eapx releases/${NEXT_VERSION}/
 cp drafts/0.0.1-draft-0.1/DCAT-AP.EIA.jpg releases/${NEXT_VERSION}/
 cp drafts/0.0.1-draft-0.1/doc-eia.html releases/${NEXT_VERSION}/
 cp releases/${LATEST_VERSION}/README.md releases/${NEXT_VERSION}/

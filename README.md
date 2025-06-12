@@ -8,7 +8,7 @@ DCAT-AP.EIA is an extension of DCAT-AP for describing environmental impact asses
 - [Working Drafts](./drafts/): Working drafts including revisions to the latest DCAT-AP.EIA release. They include
     - OpenAPI specification (`YAML`)
     - ReSpec documentation (`HTML`)
-    - UML diagram (`JPG` and `EAPX`)
+    - UML diagram (`JPG`)
     - SHACL shapefiles (`TTL`) and examples (`XML`)
 
 ## Licence
