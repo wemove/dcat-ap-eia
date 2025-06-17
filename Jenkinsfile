@@ -4,6 +4,7 @@ pipeline {
 
     environment {
         registry = "docker-registry.wemove.com/diplanung-dcat-ap-eia"
+        DOCKER_BUILDKIT = 1
     }
 
     options {
