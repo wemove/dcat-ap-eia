@@ -1,0 +1,47 @@
+/**
+    general
+*/
+body {
+    font-family: sans-serif;
+    margin: 50px;
+}
+
+p, footer {
+    margin: 36px 0;
+}
+
+p [lang], footer [lang] {
+    display: block;
+    line-height: 120%;
+    margin: 8px 0;
+}
+
+footer {
+    margin-top: 72px;
+}
+
+[lang="de"] {
+    /* no style */
+}
+
+[lang="en"] {
+    font-style: italic;
+}
+
+/**
+    codelists
+*/
+#codelists {
+    list-style: none;
+    counter-reset: num;
+}
+
+#codelists li {
+    margin: 10px 0;
+}
+
+#codelists li::before {
+    counter-increment: num;
+    content: '§\a0 5.' counters(num, '.') ' ';
+    margin-right: 5px;
+}
