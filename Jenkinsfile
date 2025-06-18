@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        registry = "docker-registry.wemove.com/diplanung-dcat-ap-eia"
+        registry = "docker-registry.wemove.com/diplanung/dcat-ap-eia"
         DOCKER_BUILDKIT = 1
     }
 
