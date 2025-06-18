@@ -2,40 +2,7 @@
 <html lang="de">
     <head>
         <meta charset="utf-8">
-        <style>
-            body {
-                font-family: sans-serif;
-                margin: 50px;
-            }
-            ol {
-                list-style: none;
-                counter-reset: num;
-            }
-            li {
-                margin: 10px 0;
-            }
-            li::before {
-                counter-increment: num;
-                content: '§\a0 5.' counters(num, '.') ' ';
-                margin-right: 5px;
-            }
-            p, footer {
-                margin: 36px 0;
-            }
-            p [lang], footer [lang] {
-                display: block;
-                line-height: 120%;
-                margin: 8px 0;
-            }
-            footer {
-                margin-top: 72px;
-            }
-            [lang="de"] {
-            }
-            [lang="en"] {
-                font-style: italic;
-            }
-        </style>
+        <link rel="stylesheet" href="../style.css">
         <title>DCAT-AP.EIA Codelisten-Repository / DCAT-AP.EIA Codelist Repository</title>
     </head>
     <body>
@@ -57,7 +24,7 @@
             <span lang="de">Die Codelisten können hier abgerufen werden:</span>
             <span lang="en">You can find the available codelists below:</span>
         </p>
-        <ol>
+        <ol id="codelists">
             <li><a href="./procedureType" title="Art eines UVP-Verfahrens / Procedure Type">
                 <span lang="de">Art eines UVP-Verfahrens</span> / 
                 <span lang="en">Procedure Type</span>

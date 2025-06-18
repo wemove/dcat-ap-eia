@@ -3,6 +3,7 @@
 ## xxxx-xx-xx - dev
 
 * [Deployment] Add Docker image, Jenkinsfile
+* [Website] Include and link to previous releases
 
 ## 2025-06-03 - 0.1.1
 
