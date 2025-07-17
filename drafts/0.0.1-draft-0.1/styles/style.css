@@ -147,3 +147,11 @@ section.specterm.ssn, section.specterm.ssn th, section.specterm.sosa tr.ssn, sec
     border: 0px dotted black;
     font-size: small;
 }
+
+#sotd.override .draft {
+  display: none;
+}
+
+#sotd:not(.override) .release {
+  display: none;
+}

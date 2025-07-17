@@ -137,8 +137,13 @@ cp drafts/0.0.1-draft-0.1/doc-eia.html releases/${NEXT_VERSION}/
 cp releases/${LATEST_VERSION}/README.md releases/${NEXT_VERSION}/
 
 echo -e "Updating version in files ..."
-# in the new version folder, change the `latestVersion` property in `doc-eia.html`
+# in the new version folder, change `doc-eia.html`
+# ... set `latestVersion`
 sed -i "s@latestVersion: \".*\",@latestVersion: \"https://github.com/wemove/dcat-ap-eia/tree/main/releases/${NEXT_VERSION}\",@g" releases/${NEXT_VERSION}/doc-eia.html
+# ... replace `specStatus` with `publishDate`
+sed -i "s@specStatus: \"unofficial\",@publishDate: \"$(date + '%Y-%m-%d')\",@g" releases/${NEXT_VERSION}/doc-plu.html
+# ... add "override" to #sotd
+sed -i "s@<section id=\"sotd\" class=\"introductory\">@<section id=\"sotd\" class=\"introductory override\">@g" your_file.html
 # in the new version folder, change the `version` property in `api-eia.yml`
 sed -i "s@version: x.y.z@version: ${NEXT_VERSION}@g" releases/${NEXT_VERSION}/api-eia.yml
 # in the new version folder, change the version in `README.md`
