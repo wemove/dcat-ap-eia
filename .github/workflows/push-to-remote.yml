@@ -1,0 +1,44 @@
+name: Push to ADO and create PR
+on:
+  push:
+    branches:
+      - develop
+  create: # trigger on tag creation
+  workflow_dispatch: # trigger explicitly
+jobs:
+  push-to-ado:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'create' && 'main' || github.ref_name }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: If triggered by tag, verify tag is on main branch
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG_COMMIT_SHA="${{ github.sha }}"
+          if ! git log --first-parent --pretty=format:%H "refs/heads/main" | grep -q "^$TAG_COMMIT_SHA$"; then
+            echo "Tag '${{ github.ref_name }}' is not on main, skipping push"
+            exit 1
+          fi
+      - name: Push to ADO
+        run: |
+          SOURCE_BRANCH="${{ github.event_name == 'create' && 'main' || github.ref_name }}"
+          TARGET_REMOTE_BRANCH="${SOURCE_BRANCH}"
+          if [ "${SOURCE_BRANCH}" == "main" ]; then
+            TARGET_REMOTE_BRANCH="release"
+          fi
+          echo "Pushing ${SOURCE_BRANCH} from GitHub to ${TARGET_REMOTE_BRANCH} on remote..."
+          git -c http.extraheader="Authorization: Basic ${{ secrets.REMOTE_PAT }}" push --force "${{ vars.REMOTE_REPO_URL }}" "${SOURCE_BRANCH}:${TARGET_REMOTE_BRANCH}"
+  create-ado-pr:
+    runs-on: ubuntu-latest
+    needs: push-to-ado
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Create ADO pull request
+        run: |
+          echo "Creating Pull Request from 'release' to 'main' in Azure DevOps for tag '${{ github.ref_name }}'..."
+          curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic ${{ secrets.REMOTE_PAT }}" "${{ vars.REMOTE_PR_URL }}" \
+            -d "{ \"sourceRefName\": \"refs/heads/release\", \"targetRefName\": \"refs/heads/main\", \"title\": \"Automated PR: ${{ github.ref_name }}\" }"
